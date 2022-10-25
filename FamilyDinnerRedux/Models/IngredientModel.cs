@@ -1,7 +1,10 @@
-﻿namespace FamilyDinnerRedux.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace FamilyDinnerRedux.Models
 {
     public class IngredientModel
     {
+        [Key]
         public int IngredientId { get; set; }
         public string IngredientName { get; set; }
 

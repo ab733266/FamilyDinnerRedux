@@ -1,4 +1,5 @@
-﻿namespace FamilyDinnerRedux.Models
+﻿
+namespace FamilyDinnerRedux.Models
 {
     public class RecipeIngredientsModel
     {

@@ -1,6 +1,7 @@
 ﻿using FamilyDinnerRedux.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Emit;
 
 namespace FamilyDinnerRedux.Data
 {
@@ -10,9 +11,18 @@ namespace FamilyDinnerRedux.Data
             : base(options)
         {
         }
-        protected override void OnModelCreating(ModelBuilder builder)
+
+        public DbSet<RecipeModel> Recipes { get; set; }
+        public DbSet<RecipeIngredientsModel> RecipeIngredients { get; set; }
+        public DbSet<IngredientModel> Ingredients { get; set; }
+        public DbSet<ApplicationUser> User { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(builder);
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<RecipeIngredientsModel>()
+            .HasKey(o => new { o.RecipeId, o.IngredientID });
         }
     }
 }
